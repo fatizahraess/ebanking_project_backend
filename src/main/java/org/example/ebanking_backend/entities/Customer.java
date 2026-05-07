@@ -1,4 +1,21 @@
 package org.example.ebanking_backend.entities;
 
+import jakarta.persistence.*;
+import jakarta.websocket.OnError;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+@Entity//pour le mapping objet relationnel
+@Data //GETTERS ET SETTERS
+@NoArgsConstructor @AllArgsConstructor // CONSTRUCTEURS AVEC ET SANS ARGS
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nom;
+    private String email;
+@OneToMany(mappedBy = "customer")//si on fait pas mapped by jpa va creer 2 cles etrangeres
+    private List<BankAccount> bankaccount;//car un customer a plsrs comptes
 }
