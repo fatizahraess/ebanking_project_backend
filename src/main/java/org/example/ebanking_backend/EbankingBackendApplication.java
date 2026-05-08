@@ -1,8 +1,13 @@
 package org.example.ebanking_backend;
 
+import org.example.ebanking_backend.dtos.BankAccountDTO;
+import org.example.ebanking_backend.dtos.CurrentBankAccountDTO;
+import org.example.ebanking_backend.dtos.CustomerDTO;
+import org.example.ebanking_backend.dtos.SavingBankAccountDTO;
 import org.example.ebanking_backend.entities.*;
 import org.example.ebanking_backend.enums.AccountStatus;
 import org.example.ebanking_backend.enums.OperationType;
+import org.example.ebanking_backend.exceptions.CustomerNotFoundException;
 import org.example.ebanking_backend.repositories.AccountOperationRepository;
 import org.example.ebanking_backend.repositories.BankAccountRepository;
 import org.example.ebanking_backend.repositories.CustomerRepository;
@@ -13,6 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
 
@@ -62,7 +68,7 @@ public class EbankingBackendApplication {
         return args -> {
             Stream.of("Hassan","Yassine","Aicha").forEach(name->{
                 Customer customer=new Customer();
-                customer.setName(name);
+                customer.setNom(name);
                 customer.setEmail(name+"@gmail.com");
                 customerRepository.save(customer);
             });

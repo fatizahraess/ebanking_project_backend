@@ -1,5 +1,12 @@
 package org.example.ebanking_backend.services;
 
+import org.example.ebanking_backend.dtos.*;
+import org.example.ebanking_backend.exceptions.BalanceNotSufficientException;
+import org.example.ebanking_backend.exceptions.BankAccountNotFoundException;
+import org.example.ebanking_backend.exceptions.CustomerNotFoundException;
+
+import java.util.List;
+
 public interface BankAccountService {
     CustomerDTO saveCustomer(CustomerDTO customerDTO);
     CurrentBankAccountDTO saveCurrentBankAccount(double initialBalance, double overDraft, Long customerId) throws CustomerNotFoundException;

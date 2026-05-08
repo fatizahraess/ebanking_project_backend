@@ -1,5 +1,27 @@
 package org.example.ebanking_backend.services;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.example.ebanking_backend.dtos.*;
+import org.example.ebanking_backend.entities.*;
+import org.example.ebanking_backend.enums.OperationType;
+import org.example.ebanking_backend.exceptions.BalanceNotSufficientException;
+import org.example.ebanking_backend.exceptions.BankAccountNotFoundException;
+import org.example.ebanking_backend.exceptions.CustomerNotFoundException;
+import org.example.ebanking_backend.mappers.BankAccountMapperImpl;
+import org.example.ebanking_backend.repositories.AccountOperationRepository;
+import org.example.ebanking_backend.repositories.BankAccountRepository;
+import org.example.ebanking_backend.repositories.CustomerRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 @AllArgsConstructor
