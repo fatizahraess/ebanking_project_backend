@@ -68,7 +68,7 @@ public class EbankingBackendApplication {
         return args -> {
             Stream.of("Hassan","Yassine","Aicha").forEach(name->{
                 Customer customer=new Customer();
-                customer.setNom(name);
+                customer.setName(name);
                 customer.setEmail(name+"@gmail.com");
                 customerRepository.save(customer);
             });
